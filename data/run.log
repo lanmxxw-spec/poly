@@ -88,3 +88,5 @@
 2026-09-12 15:02:13,246 WARNING polymarket_bot.main: Trading halted this cycle: max open positions reached (6)
 2026-09-12 15:33:02,703 INFO polymarket_bot.main: === Starting cycle | dry_run=True | kill_switch=False ===
 2026-09-12 15:33:02,703 WARNING polymarket_bot.main: Trading halted this cycle: max open positions reached (6)
+2026-09-12 16:02:13,123 INFO polymarket_bot.main: === Starting cycle | dry_run=True | kill_switch=False ===
+2026-09-12 16:02:13,123 WARNING polymarket_bot.main: Trading halted this cycle: max open positions reached (6)
