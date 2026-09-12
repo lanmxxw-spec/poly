@@ -1,0 +1,23 @@
+2026-09-12 14:02:18,367 INFO polymarket_bot.main: === Starting cycle | dry_run=True | kill_switch=False ===
+2026-09-12 14:02:18,474 INFO polymarket_bot.main: Fetched 25 markets passing liquidity/volume filters
+2026-09-12 14:02:28,355 INFO polymarket_bot.main: Collected 10 raw signals from 3 agents
+2026-09-12 14:02:28,356 INFO polymarket_bot.coordinator: Rejected SELL Yes on market 3989310: confidence 0.61 below threshold 0.62
+2026-09-12 14:02:28,356 INFO polymarket_bot.coordinator: Rejected SELL Yes on market 3989267: confidence 0.21 below threshold 0.62
+2026-09-12 14:02:28,356 INFO polymarket_bot.coordinator: Rejected BUY No on market 3989267: confidence 0.21 below threshold 0.62
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: 5 trade decision(s) approved after risk checks
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: DECISION: BUY Anyone's Legend @ ~1.000 size=$1.92 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4362621
+  reasoning: [momentum] +114.9% move over last 60min (0.465 -> 1.000)
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: DECISION: SELL Invictus Gaming @ ~0.001 size=$1.92 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4362621
+  reasoning: [momentum] -99.9% move over last 60min (0.535 -> 0.001)
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: DECISION: SELL BetBoom Team @ ~0.475 size=$1.92 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4466824
+  reasoning: [momentum] -44.4% move over last 60min (0.855 -> 0.475)
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:02:28,356 INFO polymarket_bot.main: DECISION: BUY G2 @ ~0.525 size=$1.92 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4466824
+  reasoning: [momentum] +262.1% move over last 60min (0.145 -> 0.525)
+2026-09-12 14:02:28,357 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:02:28,357 INFO polymarket_bot.main: DECISION: BUY No @ ~0.205 size=$1.04 confidence=0.63 (from 1 signal(s), 1 agreeing) market=3989227
+  reasoning: [momentum] +5.1% move over last 60min (0.195 -> 0.205)
+2026-09-12 14:02:28,357 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:02:28,357 INFO polymarket_bot.main: === Cycle complete ===

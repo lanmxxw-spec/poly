@@ -1,8 +1,105 @@
 {
-  "positions": [],
+  "positions": [
+    {
+      "market_id": "4362621",
+      "token_id": "43796277693639917481204161560924000086051978516072847838606160323516808669450",
+      "outcome": "Anyone's Legend",
+      "side": "BUY",
+      "size_usdc": 1.92,
+      "entry_price": 0.9995,
+      "opened_at": "",
+      "strategy_source": "[momentum] +114.9% move over last 60min (0.465 -> 1.000)",
+      "order_id": null
+    },
+    {
+      "market_id": "4362621",
+      "token_id": "52499756193617799721109124747350060700579504954445797565760804853719823977537",
+      "outcome": "Invictus Gaming",
+      "side": "SELL",
+      "size_usdc": 1.92,
+      "entry_price": 0.0005,
+      "opened_at": "",
+      "strategy_source": "[momentum] -99.9% move over last 60min (0.535 -> 0.001)",
+      "order_id": null
+    },
+    {
+      "market_id": "4466824",
+      "token_id": "46809282530107837617726429454711735156646634183255741975384148980654446700596",
+      "outcome": "BetBoom Team",
+      "side": "SELL",
+      "size_usdc": 1.92,
+      "entry_price": 0.475,
+      "opened_at": "",
+      "strategy_source": "[momentum] -44.4% move over last 60min (0.855 -> 0.475)",
+      "order_id": null
+    },
+    {
+      "market_id": "4466824",
+      "token_id": "616570729029951893685169527540250884567159576183493134116442262526202566143",
+      "outcome": "G2",
+      "side": "BUY",
+      "size_usdc": 1.92,
+      "entry_price": 0.525,
+      "opened_at": "",
+      "strategy_source": "[momentum] +262.1% move over last 60min (0.145 -> 0.525)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989227",
+      "token_id": "16366698950196598716681858663809384555875072025205059329422753308343230597015",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.04,
+      "entry_price": 0.205,
+      "opened_at": "",
+      "strategy_source": "[momentum] +5.1% move over last 60min (0.195 -> 0.205)",
+      "order_id": null
+    }
+  ],
   "realized_pnl_today_usdc": 0.0,
-  "trading_day": "1970-01-01",
+  "trading_day": "2026-09-12",
   "daily_loss_limit_hit": false,
-  "trade_log": [],
-  "last_run_at": null
+  "trade_log": [
+    {
+      "market_id": "4362621",
+      "outcome": "Anyone's Legend",
+      "side": "BUY",
+      "price": 0.9995,
+      "size_usdc": 1.92,
+      "dry_run": true
+    },
+    {
+      "market_id": "4362621",
+      "outcome": "Invictus Gaming",
+      "side": "SELL",
+      "price": 0.0005,
+      "size_usdc": 1.92,
+      "dry_run": true
+    },
+    {
+      "market_id": "4466824",
+      "outcome": "BetBoom Team",
+      "side": "SELL",
+      "price": 0.475,
+      "size_usdc": 1.92,
+      "dry_run": true
+    },
+    {
+      "market_id": "4466824",
+      "outcome": "G2",
+      "side": "BUY",
+      "price": 0.525,
+      "size_usdc": 1.92,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989227",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.205,
+      "size_usdc": 1.04,
+      "dry_run": true
+    }
+  ],
+  "last_run_at": "2026-09-12T14:02:28.357164+00:00"
 }
