@@ -54,6 +54,204 @@
       "opened_at": "",
       "strategy_source": "[momentum] +5.1% move over last 60min (0.195 -> 0.205)",
       "order_id": null
+    },
+    {
+      "market_id": "4466824",
+      "token_id": "46809282530107837617726429454711735156646634183255741975384148980654446700596",
+      "outcome": "BetBoom Team",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.0005,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -99.9% move over last 60min (0.425 -> 0.001)",
+      "order_id": null
+    },
+    {
+      "market_id": "4466824",
+      "token_id": "616570729029951893685169527540250884567159576183493134116442262526202566143",
+      "outcome": "G2",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.9995,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +73.8% move over last 60min (0.575 -> 1.000)",
+      "order_id": null
+    },
+    {
+      "market_id": "4472420",
+      "token_id": "110862736130399055154895096666769432183057397613372651865466642227398014026849",
+      "outcome": "Titouan Droguet",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.9995,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +43.8% move over last 60min (0.695 -> 1.000)",
+      "order_id": null
+    },
+    {
+      "market_id": "4472420",
+      "token_id": "107524438193588391250232159040401094596219491531080002858709326453095312303518",
+      "outcome": "Nicolai Budkov Kjaer",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.0005,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -99.8% move over last 60min (0.305 -> 0.001)",
+      "order_id": null
+    },
+    {
+      "market_id": "3758940",
+      "token_id": "71196432678894692637851043462917445459840798162184260770134856020754277710922",
+      "outcome": "Yes",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.007,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +16.7% move over last 60min (0.006 -> 0.007)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989249",
+      "token_id": "14901714649540516285798660064483871308249682172646468304320997883676299229715",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.155,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +14.8% move over last 60min (0.135 -> 0.155)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989267",
+      "token_id": "37056447951477237578004496214758977181773124526892646212138173141889779212501",
+      "outcome": "Yes",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.065,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -80.6% move over last 60min (0.335 -> 0.065)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989267",
+      "token_id": "74131241141411133604668315951687526910346375766443544299124348589478589490186",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.935,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +40.6% move over last 60min (0.665 -> 0.935)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989284",
+      "token_id": "70260777491475914869625570868264866259979326373999680096114092604889751902168",
+      "outcome": "Yes",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.905,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +79.2% move over last 60min (0.505 -> 0.905)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989284",
+      "token_id": "66086112431590434380006454571256419542506267152686768404181632312356404698286",
+      "outcome": "No",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.095,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -80.8% move over last 60min (0.495 -> 0.095)",
+      "order_id": null
+    },
+    {
+      "market_id": "3989251",
+      "token_id": "59360741179589810806660949059095715491715289450990397847064535119224649094708",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.425,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +16.4% move over last 60min (0.365 -> 0.425); [volume_spike] volume/liquidity ratio 15.3x (threshold 3.0x), latest tick direction +",
+      "order_id": null
+    },
+    {
+      "market_id": "3989227",
+      "token_id": "8345235115259791017124926977649814015774877062975656424337303351144207238697",
+      "outcome": "Yes",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.495,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -38.5% move over last 60min (0.805 -> 0.495); [volume_spike] volume/liquidity ratio 15.2x (threshold 3.0x), latest tick direction -",
+      "order_id": null
+    },
+    {
+      "market_id": "3989227",
+      "token_id": "16366698950196598716681858663809384555875072025205059329422753308343230597015",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.505,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +159.0% move over last 60min (0.195 -> 0.505); [volume_spike] volume/liquidity ratio 15.2x (threshold 3.0x), latest tick direction +",
+      "order_id": null
+    },
+    {
+      "market_id": "3993286",
+      "token_id": "35285874617944121430954747611471415790635554681757434733006972682939076060581",
+      "outcome": "Chelsea FC",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.275,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -53.8% move over last 60min (0.595 -> 0.275); [volume_spike] volume/liquidity ratio 52.1x (threshold 3.0x), latest tick direction -",
+      "order_id": null
+    },
+    {
+      "market_id": "3993286",
+      "token_id": "94577021625320362605174279302589527639881925184379369256322159823365160287945",
+      "outcome": "Hull City AFC",
+      "side": "BUY",
+      "size_usdc": 1.28,
+      "entry_price": 0.725,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +79.0% move over last 60min (0.405 -> 0.725); [volume_spike] volume/liquidity ratio 52.1x (threshold 3.0x), latest tick direction +",
+      "order_id": null
+    },
+    {
+      "market_id": "3989251",
+      "token_id": "113586890048869063802892521097857919747297858935115571768749814917784242382742",
+      "outcome": "Yes",
+      "side": "SELL",
+      "size_usdc": 1.28,
+      "entry_price": 0.575,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] -9.4% move over last 60min (0.635 -> 0.575); [volume_spike] volume/liquidity ratio 15.3x (threshold 3.0x), latest tick direction -",
+      "order_id": null
+    },
+    {
+      "market_id": "4019525",
+      "token_id": "15042588495563876504441186903579809484244890157272598095110914611886302724060",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.2,
+      "entry_price": 0.155,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[momentum] +6.9% move over last 60min (0.145 -> 0.155)",
+      "order_id": null
+    },
+    {
+      "market_id": "3758940",
+      "token_id": "72290990319850541708256167232494273215116200141978665698869628917720043765813",
+      "outcome": "No",
+      "side": "BUY",
+      "size_usdc": 1.04,
+      "entry_price": 0.993,
+      "opened_at": "2026-09-12T14:02:28.357164+00:00",
+      "strategy_source": "[volume_spike] volume/liquidity ratio 5.4x (threshold 3.0x), latest tick direction +",
+      "order_id": null
     }
   ],
   "realized_pnl_today_usdc": 0.0,
@@ -99,7 +297,151 @@
       "price": 0.205,
       "size_usdc": 1.04,
       "dry_run": true
+    },
+    {
+      "market_id": "4466824",
+      "outcome": "BetBoom Team",
+      "side": "SELL",
+      "price": 0.0005,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "4466824",
+      "outcome": "G2",
+      "side": "BUY",
+      "price": 0.9995,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "4472420",
+      "outcome": "Titouan Droguet",
+      "side": "BUY",
+      "price": 0.9995,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "4472420",
+      "outcome": "Nicolai Budkov Kjaer",
+      "side": "SELL",
+      "price": 0.0005,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3758940",
+      "outcome": "Yes",
+      "side": "BUY",
+      "price": 0.007,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989249",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.155,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989267",
+      "outcome": "Yes",
+      "side": "SELL",
+      "price": 0.065,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989267",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.935,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989284",
+      "outcome": "Yes",
+      "side": "BUY",
+      "price": 0.905,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989284",
+      "outcome": "No",
+      "side": "SELL",
+      "price": 0.095,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989251",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.425,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989227",
+      "outcome": "Yes",
+      "side": "SELL",
+      "price": 0.495,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989227",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.505,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3993286",
+      "outcome": "Chelsea FC",
+      "side": "SELL",
+      "price": 0.275,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3993286",
+      "outcome": "Hull City AFC",
+      "side": "BUY",
+      "price": 0.725,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "3989251",
+      "outcome": "Yes",
+      "side": "SELL",
+      "price": 0.575,
+      "size_usdc": 1.28,
+      "dry_run": true
+    },
+    {
+      "market_id": "4019525",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.155,
+      "size_usdc": 1.2,
+      "dry_run": true
+    },
+    {
+      "market_id": "3758940",
+      "outcome": "No",
+      "side": "BUY",
+      "price": 0.993,
+      "size_usdc": 1.04,
+      "dry_run": true
     }
   ],
-  "last_run_at": "2026-09-12T14:02:28.357164+00:00"
+  "last_run_at": "2026-09-12T14:35:36.207473+00:00"
 }

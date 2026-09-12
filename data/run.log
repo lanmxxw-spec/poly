@@ -21,3 +21,66 @@
   reasoning: [momentum] +5.1% move over last 60min (0.195 -> 0.205)
 2026-09-12 14:02:28,357 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
 2026-09-12 14:02:28,357 INFO polymarket_bot.main: === Cycle complete ===
+2026-09-12 14:35:24,382 INFO polymarket_bot.main: === Starting cycle | dry_run=True | kill_switch=False ===
+2026-09-12 14:35:24,627 INFO polymarket_bot.main: Fetched 25 markets passing liquidity/volume filters
+2026-09-12 14:35:36,205 INFO polymarket_bot.main: Collected 32 raw signals from 3 agents
+2026-09-12 14:35:36,205 INFO polymarket_bot.coordinator: Rejected SELL Yes on market 3986275: confidence 0.19 below threshold 0.62
+2026-09-12 14:35:36,205 INFO polymarket_bot.coordinator: Rejected BUY No on market 3986275: confidence 0.19 below threshold 0.62
+2026-09-12 14:35:36,205 INFO polymarket_bot.coordinator: Rejected SELL Yes on market 3989310: confidence 0.15 below threshold 0.62
+2026-09-12 14:35:36,205 INFO polymarket_bot.coordinator: Rejected BUY No on market 3989310: confidence 0.12 below threshold 0.62
+2026-09-12 14:35:36,205 INFO polymarket_bot.main: 18 trade decision(s) approved after risk checks
+2026-09-12 14:35:36,205 INFO polymarket_bot.main: DECISION: SELL BetBoom Team @ ~0.001 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4466824
+  reasoning: [momentum] -99.9% move over last 60min (0.425 -> 0.001)
+2026-09-12 14:35:36,205 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY G2 @ ~1.000 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4466824
+  reasoning: [momentum] +73.8% move over last 60min (0.575 -> 1.000)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY Titouan Droguet @ ~1.000 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4472420
+  reasoning: [momentum] +43.8% move over last 60min (0.695 -> 1.000)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: SELL Nicolai Budkov Kjaer @ ~0.001 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4472420
+  reasoning: [momentum] -99.8% move over last 60min (0.305 -> 0.001)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY Yes @ ~0.007 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=3758940
+  reasoning: [momentum] +16.7% move over last 60min (0.006 -> 0.007)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY No @ ~0.155 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=3989249
+  reasoning: [momentum] +14.8% move over last 60min (0.135 -> 0.155)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.065 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=3989267
+  reasoning: [momentum] -80.6% move over last 60min (0.335 -> 0.065)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY No @ ~0.935 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=3989267
+  reasoning: [momentum] +40.6% move over last 60min (0.665 -> 0.935)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY Yes @ ~0.905 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=3989284
+  reasoning: [momentum] +79.2% move over last 60min (0.505 -> 0.905)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: SELL No @ ~0.095 size=$1.28 confidence=0.85 (from 1 signal(s), 1 agreeing) market=3989284
+  reasoning: [momentum] -80.8% move over last 60min (0.495 -> 0.095)
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY No @ ~0.425 size=$1.28 confidence=0.79 (from 2 signal(s), 2 agreeing) market=3989251
+  reasoning: [momentum] +16.4% move over last 60min (0.365 -> 0.425); [volume_spike] volume/liquidity ratio 15.3x (threshold 3.0x), latest tick direction +
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.495 size=$1.28 confidence=0.79 (from 2 signal(s), 2 agreeing) market=3989227
+  reasoning: [momentum] -38.5% move over last 60min (0.805 -> 0.495); [volume_spike] volume/liquidity ratio 15.2x (threshold 3.0x), latest tick direction -
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY No @ ~0.505 size=$1.28 confidence=0.79 (from 2 signal(s), 2 agreeing) market=3989227
+  reasoning: [momentum] +159.0% move over last 60min (0.195 -> 0.505); [volume_spike] volume/liquidity ratio 15.2x (threshold 3.0x), latest tick direction +
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: SELL Chelsea FC @ ~0.275 size=$1.28 confidence=0.79 (from 2 signal(s), 2 agreeing) market=3993286
+  reasoning: [momentum] -53.8% move over last 60min (0.595 -> 0.275); [volume_spike] volume/liquidity ratio 52.1x (threshold 3.0x), latest tick direction -
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,206 INFO polymarket_bot.main: DECISION: BUY Hull City AFC @ ~0.725 size=$1.28 confidence=0.79 (from 2 signal(s), 2 agreeing) market=3993286
+  reasoning: [momentum] +79.0% move over last 60min (0.405 -> 0.725); [volume_spike] volume/liquidity ratio 52.1x (threshold 3.0x), latest tick direction +
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.575 size=$1.28 confidence=0.72 (from 2 signal(s), 2 agreeing) market=3989251
+  reasoning: [momentum] -9.4% move over last 60min (0.635 -> 0.575); [volume_spike] volume/liquidity ratio 15.3x (threshold 3.0x), latest tick direction -
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: DECISION: BUY No @ ~0.155 size=$1.20 confidence=0.67 (from 1 signal(s), 1 agreeing) market=4019525
+  reasoning: [momentum] +6.9% move over last 60min (0.145 -> 0.155)
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: DECISION: BUY No @ ~0.993 size=$1.04 confidence=0.63 (from 1 signal(s), 1 agreeing) market=3758940
+  reasoning: [volume_spike] volume/liquidity ratio 5.4x (threshold 3.0x), latest tick direction +
+2026-09-12 14:35:36,207 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
+2026-09-12 14:35:36,208 INFO polymarket_bot.main: === Cycle complete ===
