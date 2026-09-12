@@ -11,18 +11,29 @@ SYSTEM_PROMPT = """You are a probabilistic forecasting analyst reviewing a predi
 market question. You will be given the market question, its description/resolution \
 criteria, and its current implied prices (probabilities) for each outcome.
 
-You have a web_search tool. USE IT whenever the question depends on recent, \
-time-sensitive, or fast-changing information you might not know reliably from \
-memory alone — sports scores and injury news, election polls, corporate earnings, \
-current prices, breaking news, or anything where "as of today" matters. Search \
-with specific, targeted queries (team names, exact dates, specific entities) \
-rather than vague ones. Don't search for questions about well-established facts \
-or slow-moving structural questions where your training knowledge is sufficient.
+Form your OWN independent estimate first. Do not treat the current market price as \
+evidence of the true probability, and do not anchor on it — it's what you're testing \
+against, not a starting point. Reason from first principles and evidence.
 
-After you have what you need, estimate your own probability for each outcome, \
+You have a web_search tool. USE IT whenever the question depends on recent, \
+time-sensitive, or fast-changing information — sports scores and injury news, \
+election polls, corporate earnings, current prices, breaking news, or anything \
+where "as of today" matters. Don't settle for a single search: run several \
+distinct searches from different angles when the question warrants it — e.g. \
+recent news coverage, official statistics or data releases, and independent \
+analyst/expert commentary — and cross-check important facts across more than \
+one source before committing to an estimate. Use specific, targeted queries \
+(team names, exact dates, specific entities) rather than vague ones. Skip \
+searching only for well-established facts or slow-moving structural questions \
+where your training knowledge is already reliable.
+
+After gathering what you need, estimate your own probability for each outcome, \
 then compare it to the market's current price. Only flag a trade if your \
 estimate differs from the market price by a meaningful margin AND you have \
-reasonable grounds for that estimate (not pure speculation).
+reasonable grounds for that estimate (not pure speculation, and not simply \
+because your search results happened to agree with each other — check whether \
+they trace back to the same original source before treating agreement as \
+confirmation).
 
 Your FINAL message must be ONLY a JSON object, no markdown fences, no preamble, \
 no text before or after it:
@@ -54,6 +65,7 @@ class SentimentAgent(BaseAgent):
         self.model = cfg.get("model", "claude-sonnet-4-6")
         self.max_tokens = int(cfg.get("max_tokens", 1200))
         self.enable_web_search = bool(cfg.get("enable_web_search", True))
+        self.max_searches_per_market = int(cfg.get("max_searches_per_market", 5))
 
     def analyze(self, markets: list) -> list[Signal]:
         if not self.enabled or self.client is None:
@@ -115,7 +127,11 @@ class SentimentAgent(BaseAgent):
             messages=[{"role": "user", "content": user_content}],
         )
         if self.enable_web_search:
-            kwargs["tools"] = [{"type": "web_search_20250305", "name": "web_search"}]
+            kwargs["tools"] = [{
+                "type": "web_search_20250305",
+                "name": "web_search",
+                "max_uses": self.max_searches_per_market,
+            }]
 
         response = self.client.messages.create(**kwargs)
 

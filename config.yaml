@@ -29,7 +29,7 @@ market_scan:
   categories: []
   keywords: []
   max_markets_per_cycle: 25   # cap how many markets get pulled into analysis each run
-  max_sentiment_calls_per_cycle: 8  # hard cap on Claude API calls per run (cost control)
+  max_sentiment_calls_per_cycle: 3  # hard cap on Claude API calls per run (cost control)
 
 agents:
   momentum:
@@ -45,6 +45,7 @@ agents:
     model: "claude-sonnet-4-6"
     max_tokens: 1200
     enable_web_search: true
+    max_searches_per_market: 3
   arbitrage:
     enabled: true
     min_mispricing_pct: 3.0   # sum of correlated outcome prices deviating from 100% by this much

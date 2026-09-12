@@ -2,9 +2,10 @@ name: Polymarket Trading Cycle
 
 on:
   schedule:
-    # Every 30 minutes. GitHub's cron can lag under load — treat this as
-    # "approximately every 30 min", not a hard real-time guarantee.
-    - cron: "*/30 * * * *"
+    # Every 2 hours. With multi-search web lookups per market this keeps
+    # monthly API/search cost within budget — increase frequency only if
+    # you've raised the budget accordingly.
+    - cron: "0 */2 * * *"
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 # Prevent overlapping runs from racing on state.json
