@@ -39,7 +39,7 @@ def main():
         funder=funder,
         signature_type=signature_type,
     )
-    creds = client.create_or_derive_api_creds()
+    creds = client.create_or_derive_api_key()
 
     print("\nAdd these to your .env / GitHub Actions secrets:\n")
     print(f"CLOB_API_KEY={creds.api_key}")
