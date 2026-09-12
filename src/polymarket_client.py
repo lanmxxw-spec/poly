@@ -35,6 +35,7 @@ class MarketSnapshot:
     outcome_prices: list[float]   # implied probabilities, should sum ~1.0 for binary markets
     end_date: str | None
     description: str = ""
+    min_order_size_usdc: float = 1.0   # Polymarket sets this per-market; varies
 
 
 class GammaClient:
@@ -44,7 +45,7 @@ class GammaClient:
         self.session = session or requests.Session()
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
-    def fetch_active_markets(self, limit: int = 100) -> list[MarketSnapshot]:
+    def fetch_active_markets(self, limit: int = 100, default_min_order: float = 1.0) -> list[MarketSnapshot]:
         resp = self.session.get(
             f"{GAMMA_BASE}/markets",
             params={"active": "true", "closed": "false", "limit": limit, "order": "volume24hr", "ascending": "false"},
@@ -55,12 +56,30 @@ class GammaClient:
         snapshots = []
         for m in raw_markets:
             try:
-                snapshots.append(self._parse_market(m))
+                snapshots.append(self._parse_market(m, default_min_order))
             except (KeyError, ValueError, TypeError) as e:
                 logger.debug("Skipping unparseable market %s: %s", m.get("id"), e)
         return snapshots
 
-    def _parse_market(self, m: dict[str, Any]) -> MarketSnapshot:
+    def fetch_market_min_order_size(self, condition_id: str, default: float = 1.0) -> float:
+        """Best-effort lookup of a market's real minimum order size from the
+        CLOB's public market endpoint. Falls back to `default` (Gamma's list
+        endpoint doesn't reliably expose this, and per-market lookups cost an
+        extra request, so this is only called for markets we're about to trade,
+        not for every market scanned).
+        """
+        try:
+            resp = self.session.get(f"{CLOB_PUBLIC_BASE}/markets/{condition_id}", timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            for key in ("minimum_order_size", "minOrderSize", "min_order_size"):
+                if key in data and data[key]:
+                    return float(data[key])
+        except Exception as e:
+            logger.debug("Could not fetch min order size for %s, using default: %s", condition_id, e)
+        return default
+
+    def _parse_market(self, m: dict[str, Any], default_min_order: float = 1.0) -> MarketSnapshot:
         import json as _json
 
         outcomes = _json.loads(m.get("outcomes", "[]")) if isinstance(m.get("outcomes"), str) else m.get("outcomes", [])
@@ -72,6 +91,15 @@ class GammaClient:
         prices_raw = m.get("outcomePrices", "[]")
         prices = _json.loads(prices_raw) if isinstance(prices_raw, str) else prices_raw
         prices = [float(p) for p in prices]
+
+        min_order = default_min_order
+        for key in ("orderMinSize", "minimum_order_size", "minOrderSize"):
+            if m.get(key):
+                try:
+                    min_order = float(m[key])
+                    break
+                except (TypeError, ValueError):
+                    pass
 
         return MarketSnapshot(
             market_id=str(m["id"]),
@@ -87,6 +115,7 @@ class GammaClient:
             outcome_prices=prices,
             end_date=m.get("endDate"),
             description=m.get("description", ""),
+            min_order_size_usdc=min_order,
         )
 
 

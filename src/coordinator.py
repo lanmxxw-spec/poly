@@ -73,16 +73,18 @@ class PortfolioCoordinator:
         return decisions
 
     def finalize_with_risk(
-        self, decisions: list[TradeDecision], state: BotState
+        self, decisions: list[TradeDecision], state: BotState, min_order_by_market: dict[str, float] | None = None
     ) -> list[TradeDecision]:
         approved: list[TradeDecision] = []
+        min_order_by_market = min_order_by_market or {}
         # Sort by confidence descending so the best ideas get first claim on risk budget.
         decisions_sorted = sorted(
             decisions, key=lambda d: float(d.confidence.split(" ")[0]), reverse=True
         )
         for d in decisions_sorted:
             confidence_value = float(d.confidence.split(" ")[0])
-            ok, size, reason = self.risk_manager.size_and_approve(confidence_value, state)
+            min_order = min_order_by_market.get(d.market_id)
+            ok, size, reason = self.risk_manager.size_and_approve(confidence_value, state, min_order)
             if not ok:
                 logger.info("Rejected %s %s on market %s: %s", d.side, d.outcome, d.market_id, reason)
                 continue

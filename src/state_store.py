@@ -32,6 +32,9 @@ class BotState:
     daily_loss_limit_hit: bool = False
     trade_log: list[dict[str, Any]] = field(default_factory=list)
     last_run_at: str | None = None
+    # Compounding bankroll: None on first ever run -> seeded from config's
+    # capital.bankroll_usdc, then grows/shrinks as positions settle.
+    current_bankroll_usdc: float | None = None
 
     def roll_day_if_needed(self) -> None:
         today = date.today().isoformat()
@@ -57,6 +60,7 @@ class BotState:
             daily_loss_limit_hit=d.get("daily_loss_limit_hit", False),
             trade_log=d.get("trade_log", []),
             last_run_at=d.get("last_run_at"),
+            current_bankroll_usdc=d.get("current_bankroll_usdc"),
         )
 
 

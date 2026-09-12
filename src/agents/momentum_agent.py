@@ -13,8 +13,15 @@ class MomentumAgent(BaseAgent):
     on the theory that fresh information is being priced in and the move
     tends to continue briefly (momentum) rather than instantly mean-revert
     on these relatively illiquid markets.
+
+    Skips outcomes already priced near certainty (close to 0 or 1): the
+    payoff there is capped at a fraction of a cent while the downside on a
+    surprise reversal is nearly the full stake — a bad risk/reward regardless
+    of how strong the recent move looks.
     """
     name = "momentum"
+    EXTREME_LOW = 0.03
+    EXTREME_HIGH = 0.97
 
     def __init__(self, cfg: dict, gamma_client):
         super().__init__(cfg)
@@ -30,6 +37,8 @@ class MomentumAgent(BaseAgent):
             for outcome, token_id, current_price in zip(
                 market.outcomes, market.outcome_token_ids, market.outcome_prices
             ):
+                if current_price <= self.EXTREME_LOW or current_price >= self.EXTREME_HIGH:
+                    continue  # already priced near-certain; bad risk/reward to chase further
                 try:
                     history = self.gamma_client.fetch_price_history(token_id, interval="1h")
                 except Exception as e:

@@ -16,8 +16,13 @@ class VolumeSpikeAgent(BaseAgent):
     of the current price the volume is concentrated by comparing the most
     recent price tick direction, and defers most of its confidence to
     corroboration from other agents (it mainly acts as a market filter/booster).
+
+    Skips outcomes already priced near certainty (see MomentumAgent) — same
+    bad risk/reward applies regardless of what's driving the volume.
     """
     name = "volume_spike"
+    EXTREME_LOW = 0.03
+    EXTREME_HIGH = 0.97
 
     def __init__(self, cfg: dict, gamma_client):
         super().__init__(cfg)
@@ -38,6 +43,8 @@ class VolumeSpikeAgent(BaseAgent):
             for outcome, token_id, current_price in zip(
                 market.outcomes, market.outcome_token_ids, market.outcome_prices
             ):
+                if current_price <= self.EXTREME_LOW or current_price >= self.EXTREME_HIGH:
+                    continue
                 try:
                     history = self.gamma_client.fetch_price_history(token_id, interval="1h")
                 except Exception as e:

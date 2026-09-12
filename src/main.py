@@ -18,6 +18,7 @@ from .config import load_settings
 from .coordinator import PortfolioCoordinator
 from .polymarket_client import ClobExecutionClient, GammaClient
 from .risk_manager import RiskManager
+from .settlement import settle_resolved_positions
 from .state_store import Position, load_state, save_state
 
 logger = logging.getLogger("polymarket_bot.main")
@@ -49,6 +50,9 @@ def run_cycle(config_path: str | None = None) -> int:
 
     state = load_state(settings.state_path)
 
+    gamma = GammaClient()
+    settle_resolved_positions(state, gamma)  # updates current_bankroll_usdc from any resolved markets
+
     risk_manager = RiskManager(settings.risk, settings.bankroll_usdc)
     can_trade, reason = risk_manager.can_trade_at_all(state, settings.kill_switch)
     if not can_trade:
@@ -56,9 +60,11 @@ def run_cycle(config_path: str | None = None) -> int:
         save_state(settings.state_path, state)
         return 0
 
-    gamma = GammaClient()
     scan_cfg = settings.market_scan
-    markets = gamma.fetch_active_markets(limit=scan_cfg["max_markets_per_cycle"])
+    markets = gamma.fetch_active_markets(
+        limit=scan_cfg["max_markets_per_cycle"],
+        default_min_order=settings.risk.get("default_min_order_usdc", 1.0),
+    )
 
     min_vol = settings.risk["min_market_volume_usdc"]
     min_liq = settings.risk["min_market_liquidity_usdc"]
@@ -95,9 +101,11 @@ def run_cycle(config_path: str | None = None) -> int:
     logger.info("Collected %d raw signals from %d agents", len(all_signals),
                 sum(1 for a in [momentum, volume_spike, arbitrage] if a.enabled))
 
+    min_order_by_market = {m.market_id: m.min_order_size_usdc for m in markets}
+
     coordinator = PortfolioCoordinator(risk_manager)
     decisions = coordinator.aggregate(all_signals)
-    approved = coordinator.finalize_with_risk(decisions, state)
+    approved = coordinator.finalize_with_risk(decisions, state, min_order_by_market)
 
     logger.info("%d trade decision(s) approved after risk checks", len(approved))
 

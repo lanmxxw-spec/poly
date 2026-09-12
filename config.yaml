@@ -4,22 +4,24 @@
 # dry-run cycles and are comfortable with the signals it's generating.
 
 mode:
-  dry_run: true          # true = simulate only, no real orders sent
+  dry_run: false         # true = simulate only, no real orders sent. LIVE TRADING.
   kill_switch: false     # true = bot refuses to trade at all, regardless of dry_run
 
 capital:
-  # Total USDC you're allocating to this bot. The bot will never assume more
-  # than this exists, even if your wallet balance is higher.
+  # Starting bankroll — used only to seed the bot on its very first run. From
+  # then on, sizing is based on state.json's current_bankroll_usdc, which is
+  # updated as positions resolve (compounding: bigger balance -> bigger trades).
   bankroll_usdc: 100.0
 
 risk:
-  max_risk_per_trade_pct: 2.0      # % of bankroll risked on a single position
-  max_total_open_risk_pct: 10.0    # % of bankroll allowed across all open positions at once
+  max_risk_per_trade_pct: 2.0      # % of CURRENT bankroll risked on a single position (compounds)
+  max_total_open_risk_pct: 10.0    # % of current bankroll allowed across all open positions at once
   daily_loss_limit_pct: 8.0        # stop trading for the day if realized+unrealized loss exceeds this
   max_open_positions: 6
   min_confidence_to_trade: 0.62    # coordinator's aggregated confidence threshold (0.5-1.0)
   min_market_volume_usdc: 5000     # ignore illiquid markets below this 24h volume
   min_market_liquidity_usdc: 2000  # ignore markets with thin order books
+  default_min_order_usdc: 1.0      # fallback if a market doesn't report its own minimum
 
 market_scan:
   # Keywords/categories to focus on. Empty list = scan all active markets
