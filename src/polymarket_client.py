@@ -157,6 +157,8 @@ class ClobExecutionClient:
             key=self.settings.polygon_private_key,
             chain_id=self.settings.chain_id,
             creds=creds,
+            funder=self.settings.polymarket_funder_address or None,
+            signature_type=self.settings.polymarket_signature_type,
         )
         return self._client
 

@@ -31,6 +31,22 @@ class Settings:
     clob_host: str = field(default_factory=lambda: os.environ.get("CLOB_HOST", "https://clob.polymarket.com"))
     chain_id: int = field(default_factory=lambda: int(os.environ.get("CHAIN_ID", "137")))
     anthropic_api_key: str = field(default_factory=lambda: os.environ.get("ANTHROPIC_API_KEY", ""))
+    # Polymarket's "deposit wallet" / proxy address that actually holds funds
+    # and is used as the order's maker — distinct from the signing EOA above
+    # for most accounts (browser wallets included, per Polymarket's 2026
+    # deposit-wallet migration). Find it on polymarket.com under your profile
+    # / wallet settings. Leave blank to fall back to the signer's own address
+    # (works only for accounts still on the old direct-EOA flow, if any).
+    polymarket_funder_address: str = field(default_factory=lambda: os.environ.get("POLYMARKET_FUNDER_ADDRESS", ""))
+    # 0 = EOA, 1 = POLY_PROXY (email/Magic-link wallets), 2 = POLY_GNOSIS_SAFE,
+    # 3 = POLY_1271 (2026 deposit wallets). Leave unset to let the library default.
+    polymarket_signature_type: int | None = field(
+        default_factory=lambda: (
+            int(os.environ["POLYMARKET_SIGNATURE_TYPE"])
+            if os.environ.get("POLYMARKET_SIGNATURE_TYPE")
+            else None
+        )
+    )
 
     @property
     def dry_run(self) -> bool:

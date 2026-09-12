@@ -28,8 +28,17 @@ def main():
 
     host = os.environ.get("CLOB_HOST", "https://clob.polymarket.com")
     chain_id = int(os.environ.get("CHAIN_ID", "137"))
+    funder = os.environ.get("POLYMARKET_FUNDER_ADDRESS") or None
+    sig_type_raw = os.environ.get("POLYMARKET_SIGNATURE_TYPE")
+    signature_type = int(sig_type_raw) if sig_type_raw else None
 
-    client = ClobClient(host=host, key=private_key, chain_id=chain_id)
+    client = ClobClient(
+        host=host,
+        key=private_key,
+        chain_id=chain_id,
+        funder=funder,
+        signature_type=signature_type,
+    )
     creds = client.create_or_derive_api_creds()
 
     print("\nAdd these to your .env / GitHub Actions secrets:\n")
