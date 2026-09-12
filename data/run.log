@@ -84,3 +84,5 @@
   reasoning: [volume_spike] volume/liquidity ratio 5.4x (threshold 3.0x), latest tick direction +
 2026-09-12 14:35:36,207 INFO polymarket_bot.main: [DRY RUN] would place order but dry_run=true — no real order sent
 2026-09-12 14:35:36,208 INFO polymarket_bot.main: === Cycle complete ===
+2026-09-12 15:02:13,246 INFO polymarket_bot.main: === Starting cycle | dry_run=True | kill_switch=False ===
+2026-09-12 15:02:13,246 WARNING polymarket_bot.main: Trading halted this cycle: max open positions reached (6)
