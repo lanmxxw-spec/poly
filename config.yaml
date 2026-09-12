@@ -11,11 +11,11 @@ capital:
   # Starting bankroll — used only to seed the bot on its very first run. From
   # then on, sizing is based on state.json's current_bankroll_usdc, which is
   # updated as positions resolve (compounding: bigger balance -> bigger trades).
-  bankroll_usdc: 100.0
+  bankroll_usdc: 46.44
 
 risk:
-  max_risk_per_trade_pct: 2.0      # % of CURRENT bankroll risked on a single position (compounds)
-  max_total_open_risk_pct: 10.0    # % of current bankroll allowed across all open positions at once
+  max_risk_per_trade_pct: 6.0      # % of CURRENT bankroll risked on a single position (compounds)
+  max_total_open_risk_pct: 30.0    # % of current bankroll allowed across all open positions at once
   daily_loss_limit_pct: 8.0        # stop trading for the day if realized+unrealized loss exceeds this
   max_open_positions: 6
   min_confidence_to_trade: 0.62    # coordinator's aggregated confidence threshold (0.5-1.0)
