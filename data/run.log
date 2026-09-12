@@ -169,3 +169,40 @@ The question asks specifically about a **25 bps CUT**, but all available evidenc
   reasoning: [momentum] +6.2% move over last 60min (0.485 -> 0.515); [volume_spike] volume/liquidity ratio 3.6x (threshold 3.0x), latest tick direction +
 2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 3989327: The private key must be exactly 32 bytes long, instead of 20 bytes.
 2026-09-12 16:46:31,108 INFO polymarket_bot.main: === Cycle complete ===
+2026-09-12 17:00:14,248 INFO polymarket_bot.main: === Starting cycle | dry_run=False | kill_switch=False ===
+2026-09-12 17:00:14,386 INFO polymarket_bot.main: Fetched 25 markets passing liquidity/volume filters
+2026-09-12 17:00:50,783 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 17:01:23,183 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 17:01:57,316 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 17:01:57,362 INFO polymarket_bot.main: Collected 15 raw signals from 3 agents
+2026-09-12 17:01:57,362 INFO polymarket_bot.coordinator: Rejected SELL Yes on market 3989327: confidence 0.60 below threshold 0.62
+2026-09-12 17:01:57,363 INFO polymarket_bot.coordinator: Rejected BUY No on market 3989327: confidence 0.60 below threshold 0.62
+2026-09-12 17:01:57,363 INFO polymarket_bot.main: 9 trade decision(s) approved after risk checks
+2026-09-12 17:01:57,363 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.045 size=$5.00 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4046402
+  reasoning: [momentum] -90.3% move over last 60min (0.465 -> 0.045)
+2026-09-12 17:01:57,891 ERROR polymarket_bot.main: Order placement failed for market 4046402: Non-hexadecimal digit found
+2026-09-12 17:01:57,891 INFO polymarket_bot.main: DECISION: BUY No @ ~0.955 size=$5.00 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4046402
+  reasoning: [momentum] +78.5% move over last 60min (0.535 -> 0.955)
+2026-09-12 17:01:57,891 ERROR polymarket_bot.main: Order placement failed for market 4046402: Non-hexadecimal digit found
+2026-09-12 17:01:57,891 INFO polymarket_bot.main: DECISION: BUY Team Vitality @ ~0.455 size=$5.00 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4254515
+  reasoning: [momentum] +78.4% move over last 60min (0.255 -> 0.455)
+2026-09-12 17:01:57,891 ERROR polymarket_bot.main: Order placement failed for market 4254515: Non-hexadecimal digit found
+2026-09-12 17:01:57,891 INFO polymarket_bot.main: DECISION: SELL Movistar KOI @ ~0.545 size=$5.00 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4254515
+  reasoning: [momentum] -24.8% move over last 60min (0.725 -> 0.545)
+2026-09-12 17:01:57,891 ERROR polymarket_bot.main: Order placement failed for market 4254515: Non-hexadecimal digit found
+2026-09-12 17:01:57,891 INFO polymarket_bot.main: DECISION: SELL Oklahoma @ ~0.575 size=$5.00 confidence=0.81 (from 1 signal(s), 1 agreeing) market=4045564
+  reasoning: [momentum] -12.2% move over last 60min (0.655 -> 0.575)
+2026-09-12 17:01:57,891 ERROR polymarket_bot.main: Order placement failed for market 4045564: Non-hexadecimal digit found
+2026-09-12 17:01:57,891 INFO polymarket_bot.main: DECISION: SELL Oklahoma @ ~0.410 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4272957
+  reasoning: [momentum] -20.4% move over last 60min (0.515 -> 0.410); [volume_spike] volume/liquidity ratio 9.1x (threshold 3.0x), latest tick direction -
+2026-09-12 17:01:57,891 ERROR polymarket_bot.main: Order placement failed for market 4272957: Non-hexadecimal digit found
+2026-09-12 17:01:57,892 INFO polymarket_bot.main: DECISION: BUY Michigan @ ~0.590 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4272957
+  reasoning: [momentum] +21.6% move over last 60min (0.485 -> 0.590); [volume_spike] volume/liquidity ratio 9.1x (threshold 3.0x), latest tick direction +
+2026-09-12 17:01:57,892 ERROR polymarket_bot.main: Order placement failed for market 4272957: Non-hexadecimal digit found
+2026-09-12 17:01:57,892 INFO polymarket_bot.main: DECISION: BUY Michigan @ ~0.425 size=$5.00 confidence=0.74 (from 2 signal(s), 2 agreeing) market=4045564
+  reasoning: [momentum] +19.7% move over last 60min (0.355 -> 0.425); [volume_spike] volume/liquidity ratio 3.6x (threshold 3.0x), latest tick direction +
+2026-09-12 17:01:57,892 ERROR polymarket_bot.main: Order placement failed for market 4045564: Non-hexadecimal digit found
+2026-09-12 17:01:57,892 INFO polymarket_bot.main: DECISION: SELL No @ ~0.205 size=$5.00 confidence=0.62 (from 1 signal(s), 1 agreeing) market=2252245
+  reasoning: [momentum] -4.7% move over last 60min (0.215 -> 0.205)
+2026-09-12 17:01:57,892 ERROR polymarket_bot.main: Order placement failed for market 2252245: Non-hexadecimal digit found
+2026-09-12 17:01:57,893 INFO polymarket_bot.main: === Cycle complete ===
