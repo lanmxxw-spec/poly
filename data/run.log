@@ -128,3 +128,44 @@ The question asks specifically about a **25 bps CUT**, but all available evidenc
 2026-09-12 16:36:53,484 INFO polymarket_bot.coordinator: Rejected SELL No on market 2252245: computed size $1.39 below this market's minimum order ($5.00)
 2026-09-12 16:36:53,484 INFO polymarket_bot.main: 0 trade decision(s) approved after risk checks
 2026-09-12 16:36:53,485 INFO polymarket_bot.main: === Cycle complete ===
+2026-09-12 16:44:51,464 INFO polymarket_bot.main: === Starting cycle | dry_run=False | kill_switch=False ===
+2026-09-12 16:44:51,607 INFO polymarket_bot.main: Fetched 25 markets passing liquidity/volume filters
+2026-09-12 16:45:28,147 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 16:46:00,707 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 16:46:30,630 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 16:46:30,679 INFO polymarket_bot.main: Collected 23 raw signals from 3 agents
+2026-09-12 16:46:30,679 INFO polymarket_bot.coordinator: Rejected SELL No on market 3989327: confidence 0.61 below threshold 0.62
+2026-09-12 16:46:30,679 INFO polymarket_bot.coordinator: Rejected SELL Oklahoma on market 4272957: confidence 0.11 below threshold 0.62
+2026-09-12 16:46:30,679 INFO polymarket_bot.coordinator: Rejected BUY Michigan on market 4272957: confidence 0.11 below threshold 0.62
+2026-09-12 16:46:30,679 INFO polymarket_bot.main: 10 trade decision(s) approved after risk checks
+2026-09-12 16:46:30,679 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.175 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4046402
+  reasoning: [momentum] -62.4% move over last 60min (0.465 -> 0.175); [volume_spike] volume/liquidity ratio 14.5x (threshold 3.0x), latest tick direction -
+2026-09-12 16:46:31,106 ERROR polymarket_bot.main: Order placement failed for market 4046402: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,106 INFO polymarket_bot.main: DECISION: BUY No @ ~0.825 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4046402
+  reasoning: [momentum] +54.2% move over last 60min (0.535 -> 0.825); [volume_spike] volume/liquidity ratio 14.5x (threshold 3.0x), latest tick direction +
+2026-09-12 16:46:31,106 ERROR polymarket_bot.main: Order placement failed for market 4046402: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: BUY Team Vitality @ ~0.665 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4254512
+  reasoning: [momentum] +46.2% move over last 60min (0.455 -> 0.665); [volume_spike] volume/liquidity ratio 13.5x (threshold 3.0x), latest tick direction +
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 4254512: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: SELL Movistar KOI @ ~0.335 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4254512
+  reasoning: [momentum] -38.5% move over last 60min (0.545 -> 0.335); [volume_spike] volume/liquidity ratio 13.5x (threshold 3.0x), latest tick direction -
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 4254512: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: BUY Team Vitality @ ~0.355 size=$5.00 confidence=0.76 (from 2 signal(s), 2 agreeing) market=4254515
+  reasoning: [momentum] +29.1% move over last 60min (0.275 -> 0.355); [volume_spike] volume/liquidity ratio 5.2x (threshold 3.0x), latest tick direction +
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 4254515: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: SELL Movistar KOI @ ~0.645 size=$5.00 confidence=0.71 (from 2 signal(s), 2 agreeing) market=4254515
+  reasoning: [momentum] -11.0% move over last 60min (0.725 -> 0.645); [volume_spike] volume/liquidity ratio 5.2x (threshold 3.0x), latest tick direction -
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 4254515: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: SELL No @ ~0.145 size=$5.00 confidence=0.66 (from 1 signal(s), 1 agreeing) market=4019525
+  reasoning: [momentum] -6.5% move over last 60min (0.155 -> 0.145)
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 4019525: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.195 size=$5.00 confidence=0.62 (from 1 signal(s), 1 agreeing) market=2252244
+  reasoning: [momentum] -4.9% move over last 60min (0.205 -> 0.195)
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 2252244: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: SELL No @ ~0.205 size=$5.00 confidence=0.62 (from 1 signal(s), 1 agreeing) market=2252245
+  reasoning: [momentum] -4.7% move over last 60min (0.215 -> 0.205)
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 2252245: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,107 INFO polymarket_bot.main: DECISION: BUY Yes @ ~0.515 size=$5.00 confidence=0.62 (from 2 signal(s), 2 agreeing) market=3989327
+  reasoning: [momentum] +6.2% move over last 60min (0.485 -> 0.515); [volume_spike] volume/liquidity ratio 3.6x (threshold 3.0x), latest tick direction +
+2026-09-12 16:46:31,107 ERROR polymarket_bot.main: Order placement failed for market 3989327: The private key must be exactly 32 bytes long, instead of 20 bytes.
+2026-09-12 16:46:31,108 INFO polymarket_bot.main: === Cycle complete ===
