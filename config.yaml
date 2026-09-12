@@ -15,7 +15,7 @@ capital:
 
 risk:
   max_risk_per_trade_pct: 6.0      # % of CURRENT bankroll risked on a single position (compounds)
-  max_total_open_risk_pct: 30.0    # % of current bankroll allowed across all open positions at once
+  max_total_open_risk_pct: 50.0    # % of current bankroll allowed across all open positions at once
   daily_loss_limit_pct: 8.0        # stop trading for the day if realized+unrealized loss exceeds this
   max_open_positions: 6
   min_confidence_to_trade: 0.62    # coordinator's aggregated confidence threshold (0.5-1.0)

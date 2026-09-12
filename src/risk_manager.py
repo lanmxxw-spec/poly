@@ -34,6 +34,12 @@ class RiskManager:
         self.max_open_positions = int(cfg["max_open_positions"])
         self.min_confidence_to_trade = float(cfg["min_confidence_to_trade"])
         self.default_min_order_usdc = float(cfg.get("default_min_order_usdc", 1.0))
+        # If the intended size is below a market's minimum order, bump it up
+        # to that minimum rather than skipping the trade outright — but only
+        # up to this multiple of the FULL (unscaled) per-trade cap, so one
+        # market with an unusually high minimum can't silently eat far more
+        # of the bankroll than intended.
+        self.max_bump_multiplier = float(cfg.get("max_bump_multiplier", 3.0))
 
     def current_bankroll(self, state: BotState) -> float:
         """The live, compounding bankroll: starting seed + all realized P&L to
@@ -82,10 +88,23 @@ class RiskManager:
         confidence_scalar = min(
             1.0, 0.5 + (aggregated_confidence - self.min_confidence_to_trade) * 2
         )
-        size = min(per_trade_cap * confidence_scalar, remaining_room)
+        size = per_trade_cap * confidence_scalar
 
         floor = min_order_usdc if min_order_usdc is not None else self.default_min_order_usdc
         if size < floor:
-            return False, 0.0, f"computed size ${size:.2f} below this market's minimum order (${floor:.2f})"
+            # Below this market's minimum order — bump up to the minimum
+            # rather than skip, but cap how far we'll bump so an expensive
+            # market's minimum can't blow past the intended risk budget.
+            bump_ceiling = per_trade_cap * self.max_bump_multiplier
+            if floor > bump_ceiling:
+                return False, 0.0, (
+                    f"this market's minimum order (${floor:.2f}) exceeds "
+                    f"{self.max_bump_multiplier}x the per-trade cap (${bump_ceiling:.2f}) — skipping"
+                )
+            size = floor
+
+        size = min(size, remaining_room)
+        if size < floor:
+            return False, 0.0, f"remaining risk budget (${remaining_room:.2f}) can't cover this market's minimum (${floor:.2f})"
 
         return True, round(size, 2), "approved"

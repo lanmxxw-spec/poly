@@ -35,8 +35,10 @@ because your search results happened to agree with each other — check whether 
 they trace back to the same original source before treating agreement as \
 confirmation).
 
-Your FINAL message must be ONLY a JSON object, no markdown fences, no preamble, \
-no text before or after it:
+Do all of your reasoning and any research narration BEFORE your final answer. \
+Your very last message must be ONLY a JSON object — no markdown headers, no bold \
+text, no assessment paragraph, no commentary before or after it. Nothing may \
+follow the closing brace:
 {
   "outcome_estimates": [{"outcome": "<name>", "your_probability": 0.0-1.0}, ...],
   "confidence": 0.0-1.0,
@@ -48,6 +50,29 @@ Set recommend_trade to false if you don't have enough information, if the market
 seems efficiently priced, or if your estimate is close (within ~5 points) to the \
 market price. Be conservative — most markets are efficiently priced most of the time. \
 A market being hard to predict is not itself a reason to trade it."""
+
+
+def _extract_json_object(text: str) -> dict | None:
+    """Finds the last valid JSON object embedded anywhere in `text`, even if
+    the model wrapped it in prose or markdown despite instructions not to.
+    Scans candidate opening braces from the end of the string backwards and
+    tries brace-matched substrings until one parses.
+    """
+    start_positions = [i for i, ch in enumerate(text) if ch == "{"]
+    for start in reversed(start_positions):
+        depth = 0
+        for end in range(start, len(text)):
+            if text[end] == "{":
+                depth += 1
+            elif text[end] == "}":
+                depth -= 1
+                if depth == 0:
+                    candidate = text[start:end + 1]
+                    try:
+                        return json.loads(candidate)
+                    except json.JSONDecodeError:
+                        break  # try the next earlier '{' start position
+    return None
 
 
 class SentimentAgent(BaseAgent):
@@ -135,18 +160,22 @@ class SentimentAgent(BaseAgent):
 
         response = self.client.messages.create(**kwargs)
 
-        # Response may interleave text and server-executed search tool blocks.
-        # We want the LAST text block, since that's the model's final JSON
-        # answer after it's done searching (earlier text blocks may just be
-        # the model narrating its search plan).
-        text_blocks = [block.text for block in response.content if getattr(block, "type", None) == "text"]
-        if not text_blocks:
+        # Response may interleave prose, server-executed search tool blocks,
+        # and the final JSON — concatenate all text blocks and pull the last
+        # well-formed JSON object out of the combined text, rather than
+        # assuming the very last block is pure JSON (the model doesn't always
+        # comply with that instruction perfectly, especially after searching).
+        full_text = "\n".join(
+            block.text for block in response.content if getattr(block, "type", None) == "text"
+        )
+        if not full_text.strip():
             logger.warning("Sentiment agent got no text content for market %s", market.market_id)
             return None
-        text = text_blocks[-1].strip()
-        text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-        try:
-            return json.loads(text)
-        except json.JSONDecodeError:
-            logger.warning("Could not parse sentiment agent JSON response: %s", text[:200])
-            return None
+
+        result = _extract_json_object(full_text)
+        if result is None:
+            logger.warning(
+                "Could not find valid JSON in sentiment agent response for market %s: %s",
+                market.market_id, full_text[:300],
+            )
+        return result
