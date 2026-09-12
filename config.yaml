@@ -1,0 +1,60 @@
+# Polymarket Multi-Agent Trading Bot — Configuration
+# ---------------------------------------------------
+# Start with dry_run: true. Only flip to false once you've watched several
+# dry-run cycles and are comfortable with the signals it's generating.
+
+mode:
+  dry_run: true          # true = simulate only, no real orders sent
+  kill_switch: false     # true = bot refuses to trade at all, regardless of dry_run
+
+capital:
+  # Total USDC you're allocating to this bot. The bot will never assume more
+  # than this exists, even if your wallet balance is higher.
+  bankroll_usdc: 100.0
+
+risk:
+  max_risk_per_trade_pct: 2.0      # % of bankroll risked on a single position
+  max_total_open_risk_pct: 10.0    # % of bankroll allowed across all open positions at once
+  daily_loss_limit_pct: 8.0        # stop trading for the day if realized+unrealized loss exceeds this
+  max_open_positions: 6
+  min_confidence_to_trade: 0.62    # coordinator's aggregated confidence threshold (0.5-1.0)
+  min_market_volume_usdc: 5000     # ignore illiquid markets below this 24h volume
+  min_market_liquidity_usdc: 2000  # ignore markets with thin order books
+
+market_scan:
+  # Keywords/categories to focus on. Empty list = scan all active markets
+  # (more Claude API calls = more token cost, so narrowing this is recommended).
+  categories: []
+  keywords: []
+  max_markets_per_cycle: 25   # cap how many markets get pulled into analysis each run
+  max_sentiment_calls_per_cycle: 8  # hard cap on Claude API calls per run (cost control)
+
+agents:
+  momentum:
+    enabled: true
+    lookback_minutes: 60
+    min_price_move_pct: 4.0
+  volume_spike:
+    enabled: true
+    lookback_hours: 24
+    spike_multiple: 3.0    # current volume vs rolling average
+  sentiment:
+    enabled: true
+    model: "claude-sonnet-4-6"
+    max_tokens: 600
+  arbitrage:
+    enabled: true
+    min_mispricing_pct: 3.0   # sum of correlated outcome prices deviating from 100% by this much
+
+execution:
+  order_type: "GTC"          # good-til-cancelled limit orders on the CLOB
+  slippage_tolerance_pct: 1.5
+  poll_interval_seconds: 30  # how long to wait/poll for fill confirmation within a single run
+
+state:
+  file_path: "data/state.json"
+  git_autocommit: true   # commit state.json back to the repo at end of run (for GitHub Actions statelessness)
+
+logging:
+  level: "INFO"
+  file_path: "data/run.log"

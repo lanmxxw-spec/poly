@@ -1,0 +1,49 @@
+name: Polymarket Trading Cycle
+
+on:
+  schedule:
+    # Every 30 minutes. GitHub's cron can lag under load — treat this as
+    # "approximately every 30 min", not a hard real-time guarantee.
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+# Prevent overlapping runs from racing on state.json
+concurrency:
+  group: polymarket-trading-cycle
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # needed to commit state.json back to the repo
+
+jobs:
+  run-cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run trading cycle
+        env:
+          POLYGON_PRIVATE_KEY: ${{ secrets.POLYGON_PRIVATE_KEY }}
+          CLOB_API_KEY: ${{ secrets.CLOB_API_KEY }}
+          CLOB_API_SECRET: ${{ secrets.CLOB_API_SECRET }}
+          CLOB_API_PASSPHRASE: ${{ secrets.CLOB_API_PASSPHRASE }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m src.main
+
+      - name: Commit updated state back to repo
+        run: |
+          git config user.name "polymarket-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/state.json data/run.log
+          git diff --quiet --cached || git commit -m "chore: update bot state [skip ci]"
+          git push
