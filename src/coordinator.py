@@ -16,10 +16,10 @@ logger = logging.getLogger("polymarket_bot.coordinator")
 # Each agent's opinion is weighted — sentiment (Claude-reasoned) and arbitrage
 # (near-mechanical) are trusted more than the purely technical agents.
 AGENT_WEIGHTS = {
-    "sentiment": 1.2,
+    "sentiment": 1.6,
     "arbitrage": 1.3,
-    "momentum": 0.8,
-    "volume_spike": 0.6,
+    "momentum": 0.6,
+    "volume_spike": 0.4,
 }
 
 
