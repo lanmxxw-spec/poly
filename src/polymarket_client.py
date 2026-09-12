@@ -188,6 +188,8 @@ class ClobExecutionClient:
         return resp
 
     def get_usdc_balance(self) -> float:
+        from py_clob_client.clob_types import AssetType, BalanceAllowanceParams
+
         client = self._ensure_client()
-        balance = client.get_balance_allowance()
+        balance = client.get_balance_allowance(BalanceAllowanceParams(asset_type=AssetType.COLLATERAL))
         return float(balance.get("balance", 0)) / 1_000_000  # USDC has 6 decimals
