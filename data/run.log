@@ -243,3 +243,41 @@ The question asks specifically about a **25 bps CUT**, but all available evidenc
   reasoning: [momentum] -4.7% move over last 60min (0.215 -> 0.205)
 2026-09-12 17:07:47,323 ERROR polymarket_bot.main: Order placement failed for market 2252245: Non-hexadecimal digit found
 2026-09-12 17:07:47,323 INFO polymarket_bot.main: === Cycle complete ===
+2026-09-12 17:17:05,991 INFO polymarket_bot.main: === Starting cycle | dry_run=False | kill_switch=False ===
+2026-09-12 17:17:06,115 INFO polymarket_bot.main: Fetched 25 markets passing liquidity/volume filters
+2026-09-12 17:17:40,896 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 17:18:12,654 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 17:18:40,413 INFO httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-09-12 17:18:40,424 INFO polymarket_bot.main: Collected 22 raw signals from 3 agents
+2026-09-12 17:18:40,424 INFO polymarket_bot.coordinator: Rejected SELL Oklahoma on market 4045564: confidence 0.25 below threshold 0.62
+2026-09-12 17:18:40,424 INFO polymarket_bot.coordinator: Rejected BUY Michigan on market 4045564: confidence 0.25 below threshold 0.62
+2026-09-12 17:18:40,424 INFO polymarket_bot.coordinator: Rejected BUY Team Vitality on market 4254515: confidence 0.11 below threshold 0.62
+2026-09-12 17:18:40,424 INFO polymarket_bot.main: 9 trade decision(s) approved after risk checks
+2026-09-12 17:18:40,424 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.034 size=$5.00 confidence=0.85 (from 1 signal(s), 1 agreeing) market=4046402
+  reasoning: [momentum] -86.3% move over last 60min (0.245 -> 0.034)
+2026-09-12 17:18:41,348 ERROR polymarket_bot.main: Order placement failed for market 4046402: PolyApiException[status_code=400, error_message={'error': 'invalid order version, please use the latest clob-client'}]
+2026-09-12 17:18:41,348 INFO polymarket_bot.main: DECISION: BUY No @ ~0.967 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4046402
+  reasoning: [momentum] +28.0% move over last 60min (0.755 -> 0.967); [volume_spike] volume/liquidity ratio 17.0x (threshold 3.0x), latest tick direction +
+2026-09-12 17:18:41,558 ERROR polymarket_bot.main: Order placement failed for market 4046402: PolyApiException[status_code=403, error_message={'error': 'Trading restricted in your region, please refer to available regions - https://docs.polymarket.com/developers/CLOB/geoblock'}]
+2026-09-12 17:18:41,558 INFO polymarket_bot.main: DECISION: SELL Oklahoma @ ~0.245 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4272957
+  reasoning: [momentum] -53.3% move over last 60min (0.525 -> 0.245); [volume_spike] volume/liquidity ratio 17.4x (threshold 3.0x), latest tick direction -
+2026-09-12 17:18:41,822 ERROR polymarket_bot.main: Order placement failed for market 4272957: PolyApiException[status_code=400, error_message={'error': 'invalid order version, please use the latest clob-client'}]
+2026-09-12 17:18:41,822 INFO polymarket_bot.main: DECISION: BUY Michigan @ ~0.755 size=$5.00 confidence=0.79 (from 2 signal(s), 2 agreeing) market=4272957
+  reasoning: [momentum] +58.9% move over last 60min (0.475 -> 0.755); [volume_spike] volume/liquidity ratio 17.4x (threshold 3.0x), latest tick direction +
+2026-09-12 17:18:42,009 ERROR polymarket_bot.main: Order placement failed for market 4272957: PolyApiException[status_code=403, error_message={'error': 'Trading restricted in your region, please refer to available regions - https://docs.polymarket.com/developers/CLOB/geoblock'}]
+2026-09-12 17:18:42,009 INFO polymarket_bot.main: DECISION: SELL Yes @ ~0.445 size=$5.00 confidence=0.68 (from 2 signal(s), 2 agreeing) market=3989327
+  reasoning: [momentum] -8.2% move over last 60min (0.485 -> 0.445); [volume_spike] volume/liquidity ratio 5.9x (threshold 3.0x), latest tick direction -
+2026-09-12 17:18:42,296 ERROR polymarket_bot.main: Order placement failed for market 3989327: PolyApiException[status_code=400, error_message={'error': 'invalid order version, please use the latest clob-client'}]
+2026-09-12 17:18:42,296 INFO polymarket_bot.main: DECISION: SELL Athletic Club @ ~0.415 size=$5.00 confidence=0.68 (from 2 signal(s), 2 agreeing) market=4020864
+  reasoning: [momentum] -6.7% move over last 60min (0.445 -> 0.415); [volume_spike] volume/liquidity ratio 34.8x (threshold 3.0x), latest tick direction -
+2026-09-12 17:18:42,566 ERROR polymarket_bot.main: Order placement failed for market 4020864: PolyApiException[status_code=400, error_message={'error': 'invalid order version, please use the latest clob-client'}]
+2026-09-12 17:18:42,566 INFO polymarket_bot.main: DECISION: BUY No @ ~0.555 size=$5.00 confidence=0.67 (from 2 signal(s), 2 agreeing) market=3989327
+  reasoning: [momentum] +7.8% move over last 60min (0.515 -> 0.555); [volume_spike] volume/liquidity ratio 5.9x (threshold 3.0x), latest tick direction +
+2026-09-12 17:18:42,727 ERROR polymarket_bot.main: Order placement failed for market 3989327: PolyApiException[status_code=403, error_message={'error': 'Trading restricted in your region, please refer to available regions - https://docs.polymarket.com/developers/CLOB/geoblock'}]
+2026-09-12 17:18:42,728 INFO polymarket_bot.main: DECISION: BUY Movistar KOI @ ~0.595 size=$5.00 confidence=0.67 (from 1 signal(s), 1 agreeing) market=4254515
+  reasoning: [volume_spike] volume/liquidity ratio 6.6x (threshold 3.0x), latest tick direction +
+2026-09-12 17:18:42,893 ERROR polymarket_bot.main: Order placement failed for market 4254515: PolyApiException[status_code=403, error_message={'error': 'Trading restricted in your region, please refer to available regions - https://docs.polymarket.com/developers/CLOB/geoblock'}]
+2026-09-12 17:18:42,893 INFO polymarket_bot.main: DECISION: BUY Elche CF @ ~0.585 size=$5.00 confidence=0.66 (from 2 signal(s), 2 agreeing) market=4020864
+  reasoning: [momentum] +5.4% move over last 60min (0.555 -> 0.585); [volume_spike] volume/liquidity ratio 34.8x (threshold 3.0x), latest tick direction +
+2026-09-12 17:18:43,167 ERROR polymarket_bot.main: Order placement failed for market 4020864: PolyApiException[status_code=403, error_message={'error': 'Trading restricted in your region, please refer to available regions - https://docs.polymarket.com/developers/CLOB/geoblock'}]
+2026-09-12 17:18:43,168 INFO polymarket_bot.main: === Cycle complete ===
