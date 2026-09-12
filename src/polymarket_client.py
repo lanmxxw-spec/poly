@@ -144,8 +144,8 @@ class ClobExecutionClient:
     def _ensure_client(self):
         if self._client is not None:
             return self._client
-        from py_clob_client.client import ClobClient
-        from py_clob_client.clob_types import ApiCreds
+        from py_clob_client_v2.client import ClobClient
+        from py_clob_client_v2.clob_types import ApiCreds
 
         creds = ApiCreds(
             api_key=self.settings.clob_api_key,
@@ -169,8 +169,8 @@ class ClobExecutionClient:
         order_type: str = "GTC",
     ) -> dict[str, Any]:
         """Places a real limit order. Only call this when settings.dry_run is False."""
-        from py_clob_client.clob_types import OrderArgs
-        from py_clob_client.order_builder.constants import BUY, SELL
+        from py_clob_client_v2.clob_types import OrderArgs
+        from py_clob_client_v2.order_builder.constants import BUY, SELL
 
         client = self._ensure_client()
         side_const = BUY if side.upper() == "BUY" else SELL
@@ -188,7 +188,7 @@ class ClobExecutionClient:
         return resp
 
     def get_usdc_balance(self) -> float:
-        from py_clob_client.clob_types import AssetType, BalanceAllowanceParams
+        from py_clob_client_v2.clob_types import AssetType, BalanceAllowanceParams
 
         client = self._ensure_client()
         balance = client.get_balance_allowance(BalanceAllowanceParams(asset_type=AssetType.COLLATERAL))

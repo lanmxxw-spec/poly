@@ -24,7 +24,7 @@ def main():
         print("Set POLYGON_PRIVATE_KEY in your .env first (a dedicated wallet, not your main one).")
         sys.exit(1)
 
-    from py_clob_client.client import ClobClient
+    from py_clob_client_v2.client import ClobClient
 
     host = os.environ.get("CLOB_HOST", "https://clob.polymarket.com")
     chain_id = int(os.environ.get("CHAIN_ID", "137"))
